@@ -1,0 +1,27 @@
+Given a set of [low,high] intervals merge the overlapping intervals
+https://leetcode.com/problems/merge-intervals/submissions/
+
+i have first sorted the intervals
+added a dummy set to get the last interval (edge case)
+
+time complexity:
+sort - nLog(n)
+traversal - n
+
+space complexity:
+O n+1
+
+def merge(self,intervals):
+        intervals.sort()
+        intervals.append([-1,-1])
+        low,high = intervals[0]
+        res = []
+        for interval in intervals[1:]:
+            newLow, newHigh = interval
+            if newLow <= high and newLow >= low:
+                low = min(low,newLow)
+                high = max(high,newHigh)
+            else:
+                res.append([low, high])
+                low, high = interval
+        return res
