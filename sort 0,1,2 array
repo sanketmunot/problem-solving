@@ -1,0 +1,31 @@
+Sort 0,1,2 array
+
+https://leetcode.com/problems/sort-colors/submissions/
+
+basic approach - array.sort()
+second approach using three pointers 
+
+class Solution(object):
+    def sortColors(self, nums):
+        low = 0
+        mid = 0
+        high = len(nums) - 1
+
+        while mid <= high:
+            if nums[mid] == 0:
+                nums[low],nums[mid] = nums[mid],nums[low]
+                low +=1
+                mid +=1
+
+            elif nums[mid] == 1:
+                mid += 1
+            else:
+                nums[mid],nums[high] = nums[high],nums[mid]
+                high -= 1
+  
+time complexity: 
+1. O n=N(logN)  basic approach
+2. O (N)        three pointer approach
+
+space complexity
+appx O(N)
