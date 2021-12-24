@@ -1,0 +1,18 @@
+rotate matrix by 90 deg
+leetcode.com/problems/rotate-image/
+
+class Solution(object):
+
+    def transposeMatrix(self,matrix,n):
+
+        for row in range(n):
+            for col in range(row,n):
+                matrix[row][col],matrix[col][row] = matrix[col][row],matrix[row][col]
+        return matrix
+    
+    def rotate(self,matrix):
+        n = len(matrix)
+        for i in range(len(matrix)//2):
+            matrix[i],matrix[n-i-1] = matrix[n-i-1],matrix[i]
+
+        matrix = self.transposeMatrix(matrix,n)
