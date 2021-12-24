@@ -1,0 +1,26 @@
+merge two sorted arrays in the first array - at place
+https://leetcode.com/problems/merge-sorted-array/submissions/
+
+two approach
+add second arrays element in first array
+1. simple arr1.sort()
+2. gap algorithm below.
+
+import math
+def nextGap(gap):
+        if (gap <= 1):
+            return 0
+        return (gap / 2) + (gap % 2)
+class Solution(object):
+    
+    
+    def merge(self, nums1, m, nums2, n):
+        for i in range(n):
+            nums1[m+i]=nums2[i]
+        
+        gap = nextGap(m+n)
+        while gap > 0:
+            for i in range(m+n-gap):
+                if nums1[i]>nums1[i+gap]:
+                    nums1[i],nums1[i+gap]=nums1[i+gap],nums1[i]
+            gap = nextGap(gap)
