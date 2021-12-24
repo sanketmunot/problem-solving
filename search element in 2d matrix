@@ -1,0 +1,19 @@
+searc element in 2d matrix where each row is sorted
+
+https://leetcode.com/problems/search-a-2d-matrix
+
+
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        rows = len(matrix)
+        row = -1
+        for i in range(rows):
+            if target <= matrix[i][-1]:
+                row = i
+                break
+        if row != -1:
+            for i in matrix[row]:
+                if i == target:
+                    return True
+        return False
+        
