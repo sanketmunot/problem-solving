@@ -1,0 +1,32 @@
+reverse a linked list
+https://leetcode.com/problems/reverse-linked-list/
+method 
+1 traverse list with 3 pointers prev, curr(head), next
+2 set curr-> next to prev
+
+this way rverse is done in one traversal
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if head is None or head.next is None:
+            return head
+        p=head
+        head=head.next
+        n=head.next
+        p.next = None
+        while n is not None:
+            head.next = p
+            p = head
+            head = n
+            n = n.next
+        head.next=p
+        return head
