@@ -1,0 +1,36 @@
+Find the middle element of the linked list
+
+leetcode.com/problems/middle-of-the-linked-list/
+
+using a slow and fast pointer
+slow pointer moves 1 fast moves by 2
+once fast is none return slow
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def middleNode(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        temp = ListNode(-1,head)
+        slow = fast = temp
+        
+        while(fast!=None):
+            slow = slow.next
+            fast = fast.next
+            if fast is None:
+                break
+            else:
+                fast = fast.next
+        return slow
+        
+Time Complexity: traversing fast for half the size of linked list (times)
+O(N/2)+1 -> O(N/2) -> O(N)
+
+Space complexity: there are N nodes and one temp node to start the traversal
+O(1) + 1
