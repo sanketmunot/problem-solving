@@ -1,0 +1,19 @@
+leetcode.com/problems/maximum-subarray/
+
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        sum = 0
+        maxAns = nums[0]
+        for i in nums:
+            sum += i
+            maxAns = max(maxAns,sum)
+            if sum < 1:
+                sum =0
+        return maxAns
+        
+Time Complexity: O(N)
+Space Complexity: O(1)
