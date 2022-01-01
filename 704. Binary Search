@@ -24,4 +24,4 @@ def binarySearch(nums,target,low,high):
     else:
         return binarySearch(nums,target,mid+1,high)
         
-Time Complexity: O(N)       
+Time Complexity: O(log N)       
