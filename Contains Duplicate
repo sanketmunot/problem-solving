@@ -1,0 +1,19 @@
+leetcode.com/problems/contains-duplicate/
+
+class Solution(object):
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        size = max(nums)
+        map = [0]*(size+1)
+        
+        for i in nums:
+            if map[i]:
+                return True
+            map[i] = 1
+        return False
+        
+time Complexity: O(N)
+space complexity: O(N)
