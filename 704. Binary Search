@@ -1,0 +1,27 @@
+https://leetcode.com/problems/binary-search/
+
+class Solution(object):
+    def search(self, nums, target):
+        """
+        :type nums: List[int]
+        
+        :type target: int
+        :rtype: int
+        """
+        low = 0
+        high = len(nums)-1
+        return binarySearch(nums,target,low,high)
+    
+def binarySearch(nums,target,low,high):
+    mid = (low+high)//2
+    
+    if nums[mid]==target:
+        return mid
+    if low>mid or high<mid:
+        return -1
+    elif target < nums[mid]:
+        return binarySearch(nums,target,low,mid-1)
+    else:
+        return binarySearch(nums,target,mid+1,high)
+        
+Time Complexity: O(N)       
