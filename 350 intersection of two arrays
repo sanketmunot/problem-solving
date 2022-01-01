@@ -1,0 +1,23 @@
+https://leetcode.com/problems/intersection-of-two-arrays-ii/
+
+class Solution(object):
+    def intersect(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        storedMap ={}
+        
+        for i in nums1:
+            if storedMap.get(i)>0:
+                storedMap[i]+=1
+            else:
+                storedMap[i]=1
+        
+        ans =[]
+        for i in nums2:
+            if storedMap.get(i)>0:
+                ans.append(i)
+                storedMap[i]-=1
+        return ans
