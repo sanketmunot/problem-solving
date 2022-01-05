@@ -1,0 +1,34 @@
+https://leetcode.com/problems/reshape-the-matrix/
+
+class Solution(object):
+    def matrixReshape(self, mat, r, c):
+        """
+        :type mat: List[List[int]]
+        :type r: int
+        :type c: int
+        :rtype: List[List[int]]
+        """
+        rowLen = len(mat)
+        colLen = len(mat[0])
+        
+        if (rowLen*colLen) != (r*c):
+            return mat
+        
+        newRow = 0
+        newCol = 0
+        
+        newMat = []
+        for _ in range(r):
+            newMat.append([0]*c)
+        
+        for i in range(rowLen):
+            for j in range(colLen):
+                if newCol == c:
+                    newRow += 1
+                    newCol =0
+                newMat[newRow][newCol] = mat[i][j]
+                newCol += 1
+        return newMat
+        
+time complexity: O(N)
+space complexity: O(N)
