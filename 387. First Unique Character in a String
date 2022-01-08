@@ -1,0 +1,22 @@
+https://leetcode.com/problems/first-unique-character-in-a-string/
+
+class Solution(object):
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        length = len(s)
+        alpha = [length] * 26
+        
+        for i in range(length):
+            index = ord(s[i])-ord('a')
+            if alpha[index] == length:
+                alpha[index] = i
+            else:
+                alpha[index] = length+1
+        # print(min(alpha))
+        ans = min(alpha)
+        if ans == length+1 or ans==length:
+            return -1
+        return min(alpha)
