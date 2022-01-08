@@ -1,0 +1,29 @@
+https://leetcode.com/problems/ransom-note/submissions/
+
+class Solution(object):
+    def canConstruct(self, ransomNote, magazine):
+        """
+        :type ransomNote: str
+        :type magazine: str
+        :rtype: bool
+        """
+        magzineDict = {}
+        
+        for i in magazine:
+            if magzineDict.get(i):
+                magzineDict[i]+=1
+            else:
+                magzineDict[i]=1
+        print(magzineDict)
+        
+        for i in ransomNote:
+            if magzineDict.get(i):
+                if magzineDict.get(i)>0:
+                    magzineDict[i] -= 1
+                else:
+                    return False
+            else:
+                return False
+        return True
+        
+time complexity: O(2N) -> O(N)    
